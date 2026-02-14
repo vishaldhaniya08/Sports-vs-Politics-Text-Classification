@@ -29,7 +29,7 @@ The objective is to compare model performance across two datasets with different
 
 ---
 
-## 🧠 Models Implemented
+## Models Implemented
 
 - Naive Bayes
 - Logistic Regression
@@ -39,7 +39,7 @@ All models use **TF-IDF feature representation**.
 
 ---
 
-## 📈 Results Summary
+## Results Summary
 
 ### BBC Dataset
 
@@ -59,7 +59,7 @@ All models use **TF-IDF feature representation**.
 
 ---
 
-## 📉 Key Insights
+## Key Insights
 
 - BBC dataset is highly linearly separable.
 - AG News dataset introduces vocabulary overlap.
