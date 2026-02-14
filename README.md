@@ -1,8 +1,8 @@
 # Sports vs Politics Text Classification
 
-## 📌 Project Overview
+## Overview
 
-This project focuses on binary text classification of news articles into **Sports** and **Politics** categories using classical Machine Learning techniques.
+This problem focuses on binary text classification of news articles into **Sports** and **Politics** categories using classical Machine Learning techniques.
 
 The objective is to compare model performance across two datasets with different characteristics:
 
@@ -11,7 +11,7 @@ The objective is to compare model performance across two datasets with different
 
 ---
 
-## 📊 Datasets Used
+## Datasets Used
 
 ### 1️⃣ BBC Dataset
 - 928 total articles
@@ -67,7 +67,3 @@ All models use **TF-IDF feature representation**.
 - Classical ML models remain highly effective for topic classification.
 
 ---
-
-## ⚙️ How to Run
-
-1. Clone the repository:
