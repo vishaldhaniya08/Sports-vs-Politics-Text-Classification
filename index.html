@@ -716,15 +716,60 @@ discriminative models better handle overlapping feature distributions.
 </div>
 
 <!-- ================================================= -->
-<div class="card">
-<h2>Model Comparison Chart</h2>
-<img src="assets/comparison.png" alt="Model Comparison Chart" class="chart">
-</div>
+<p>
+The model comparison chart visually summarizes the performance of 
+Naive Bayes, Logistic Regression, and Support Vector Machine across 
+both datasets. The chart highlights two key observations:
+</p>
 
-<div class="card">
-<h2>Precision & Recall Analysis</h2>
-<img src="assets/Precision-Recall.png" alt="Precision & Recall" class="chart">
-</div>
+<ul>
+<li><b>Uniform Performance on BBC Dataset:</b> All three models achieved 
+perfect accuracy (1.000). This confirms strong lexical separability 
+between Sports and Politics in the BBC corpus. The feature space 
+constructed using TF-IDF allows for near-linear decision boundaries, 
+making even simple models highly effective.</li>
+
+<li><b>Performance Variation on AG News Dataset:</b> Accuracy slightly 
+decreases for all models (approximately 97–98%). This reflects the 
+greater vocabulary overlap, shorter document length, and higher 
+intra-class variability present in AG News.</li>
+</ul>
+
+<p>
+Among the three models, <b>Logistic Regression</b> achieved the highest 
+accuracy on AG News. This suggests that discriminative models may 
+better handle overlapping feature distributions compared to generative 
+models like Naive Bayes.
+</p>
+
+<p>
+The <b>SVM</b> performed competitively, confirming its strength in 
+high-dimensional sparse feature spaces. Meanwhile, <b>Naive Bayes</b> 
+remained a strong baseline, demonstrating that probabilistic models 
+are highly efficient for text classification tasks despite their 
+independence assumption.
+</p>
+
+<p>
+Overall, the comparison indicates that:
+</p>
+
+<ul>
+<li>Feature representation (TF-IDF) plays a more significant role 
+than classifier complexity in well-separated datasets.</li>
+
+<li>In more challenging, real-world datasets, discriminative models 
+provide marginal but consistent improvements.</li>
+
+<li>The small accuracy gap (~0.3–0.4%) suggests all three models 
+are robust and suitable for binary topic classification.</li>
+</ul>
+
+<p>
+Therefore, the chart not only compares numerical accuracy but also 
+illustrates how dataset characteristics influence classifier behavior.
+</p>
+
 
 <!-- ================================================= -->
 <div class="card">
@@ -816,4 +861,5 @@ View Source Code on GitHub
 </div>
 </body>
 </html>
+
 
