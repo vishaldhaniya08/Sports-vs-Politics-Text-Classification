@@ -7,66 +7,145 @@
 <body>
 
 <h1>Sports vs Politics Text Classification</h1>
+<p><b>Author:</b> Vishal | Roll No: B23CM1048</p>
 
-<h2>📌 Project Overview</h2>
+<hr>
+
+<h2>📌 Abstract</h2>
 <p>
-This project implements a binary text classification system to distinguish between 
-Sports and Politics news articles using classical Machine Learning techniques.
-Two datasets were used for evaluation: BBC News and AG News.
+This project investigates binary text classification for distinguishing between 
+Sports and Politics news articles using classical machine learning techniques.
+Two datasets were used: the BBC News dataset (clean and curated) and the AG News dataset 
+(larger and more realistic). The objective was to evaluate model robustness across datasets 
+and compare performance of Naive Bayes, Logistic Regression, and Support Vector Machine classifiers.
 </p>
 
-<h2>📊 Datasets Used</h2>
+<hr>
+
+<h2>📂 Data Collection</h2>
+<p>
+The BBC dataset was collected as structured folders containing text files categorized 
+into Sports and Politics. The AG News dataset was downloaded in CSV format and filtered 
+to include only World (relabelled as Politics) and Sports classes.
+</p>
+
 <ul>
-<li><b>BBC Dataset:</b> 928 articles (clean and structured)</li>
-<li><b>AG News Dataset:</b> Filtered World & Sports classes (~11,000 samples)</li>
+<li><b>BBC Dataset:</b> 928 articles (511 Sports, 417 Politics)</li>
+<li><b>AG News Dataset:</b> ~11,400 total filtered samples</li>
 </ul>
 
-<h2>🧠 Models Implemented</h2>
+<hr>
+
+<h2>📊 Dataset Characteristics</h2>
+<p>
+The BBC dataset contains longer, well-written articles with strong vocabulary separation 
+between topics. In contrast, AG News articles are shorter, more diverse, and contain 
+greater vocabulary overlap, making classification more challenging.
+</p>
+
+<hr>
+
+<h2>⚙️ Methodology</h2>
+<p>
+All text was converted to lowercase and English stopwords were removed. Documents were 
+represented using TF-IDF (Term Frequency – Inverse Document Frequency). 
+An 80-20 stratified train-test split was applied to the BBC dataset, while AG News used 
+predefined splits.
+</p>
+
+<p>
+Three classifiers were implemented:
+</p>
 <ul>
 <li>Naive Bayes</li>
 <li>Logistic Regression</li>
 <li>Support Vector Machine (Linear SVM)</li>
 </ul>
 
-<h2>📈 Results Summary</h2>
+<hr>
+
+<h2>📈 Experimental Results</h2>
 
 <h3>BBC Dataset</h3>
-<ul>
-<li>Naive Bayes: 1.000</li>
-<li>Logistic Regression: 1.000</li>
-<li>SVM: 1.000</li>
-</ul>
+<table border="1" cellpadding="8">
+<tr><th>Model</th><th>Accuracy</th></tr>
+<tr><td>Naive Bayes</td><td>1.000</td></tr>
+<tr><td>Logistic Regression</td><td>1.000</td></tr>
+<tr><td>SVM</td><td>1.000</td></tr>
+</table>
 
 <h3>AG News Dataset</h3>
-<ul>
-<li>Naive Bayes: 0.9739</li>
-<li>Logistic Regression: 0.9774</li>
-<li>SVM: 0.9761</li>
-</ul>
+<table border="1" cellpadding="8">
+<tr><th>Model</th><th>Accuracy</th></tr>
+<tr><td>Naive Bayes</td><td>0.9739</td></tr>
+<tr><td>Logistic Regression</td><td>0.9774</td></tr>
+<tr><td>SVM</td><td>0.9761</td></tr>
+</table>
 
-<h2>📊 Model Comparison</h2>
-<img src="assets/comparison_chart.png" width="600">
+<hr>
+
+<h2>📊 Model Comparison Chart</h2>
+<img src="assets/comparison_chart.png" width="700">
+
+<hr>
+
+<h2>📉 AG News Model Performance Chart</h2>
+<img src="assets/ag_model_chart.png" width="700">
+
+<hr>
 
 <h2>📉 Confusion Matrix (AG News - Logistic Regression)</h2>
 <img src="assets/confusion_matrix.png" width="500">
 
-<h2>🔍 Key Insights</h2>
+<hr>
+
+<h2>🔍 Discussion</h2>
+<p>
+All models achieved perfect accuracy on the BBC dataset due to strong lexical separation 
+between categories. However, performance slightly decreased on the AG News dataset 
+(97–98%) because of vocabulary overlap and shorter context.
+</p>
+
+<p>
+Logistic Regression performed marginally better, suggesting discriminative models 
+handle noisy feature distributions more effectively.
+</p>
+
+<hr>
+
+<h2>⚠️ Challenges Faced</h2>
 <ul>
-<li>BBC dataset is highly separable, resulting in perfect accuracy.</li>
-<li>AG dataset introduces vocabulary overlap and noise.</li>
-<li>Logistic Regression performed slightly better on noisy data.</li>
+<li>Handling encoding issues in BBC dataset.</li>
+<li>Relabeling AG News classes correctly.</li>
+<li>Managing high-dimensional TF-IDF feature space.</li>
+<li>Ensuring no data leakage during training/testing.</li>
 </ul>
 
-<h2>⚠️ Limitations</h2>
+<hr>
+
+<h2>🚧 Limitations</h2>
 <ul>
-<li>TF-IDF ignores semantic meaning.</li>
-<li>Binary classification oversimplifies real-world topics.</li>
-<li>No deep learning models were used.</li>
+<li>TF-IDF ignores semantic meaning and word order.</li>
+<li>Binary classification oversimplifies real-world news topics.</li>
+<li>Models do not capture deep contextual understanding.</li>
+<li>No deep learning models were explored.</li>
 </ul>
+
+<hr>
+
+<h2>🚀 Future Work</h2>
+<ul>
+<li>Use word embeddings (Word2Vec, GloVe).</li>
+<li>Implement transformer-based models (BERT).</li>
+<li>Extend to multi-class classification.</li>
+<li>Apply cross-validation for robustness analysis.</li>
+</ul>
+
+<hr>
 
 <h2>📄 Full Report</h2>
 <p>
-<a href="report/Final_Report.pdf" target="_blank">Download Full Report (PDF)</a>
+<a href="report/Final_Report.pdf" target="_blank">Download Complete Report (PDF)</a>
 </p>
 
 <h2>💻 Source Code</h2>
@@ -76,9 +155,12 @@ View GitHub Repository
 </a>
 </p>
 
+<hr>
+
 <footer>
-<p>Author: Vishal | Roll No: B23CM1048</p>
+<p>Natural Language Understanding Assignment</p>
 </footer>
 
 </body>
 </html>
+
