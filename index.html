@@ -11,7 +11,7 @@
 
 <hr>
 
-<h2>📌 Abstract</h2>
+<h2>Abstract</h2>
 <p>
 This project investigates binary text classification for distinguishing between 
 Sports and Politics news articles using classical machine learning techniques.
@@ -36,7 +36,7 @@ to include only World (relabelled as Politics) and Sports classes.
 
 <hr>
 
-<h2>📊 Dataset Characteristics</h2>
+<h2>Dataset Characteristics</h2>
 <p>
 The BBC dataset contains longer, well-written articles with strong vocabulary separation 
 between topics. In contrast, AG News articles are shorter, more diverse, and contain 
@@ -45,7 +45,7 @@ greater vocabulary overlap, making classification more challenging.
 
 <hr>
 
-<h2>⚙️ Methodology</h2>
+<h2>Methodology</h2>
 <p>
 All text was converted to lowercase and English stopwords were removed. Documents were 
 represented using TF-IDF (Term Frequency – Inverse Document Frequency). 
@@ -64,7 +64,7 @@ Three classifiers were implemented:
 
 <hr>
 
-<h2>📈 Experimental Results</h2>
+<h2>Experimental Results</h2>
 
 <h3>BBC Dataset</h3>
 <table border="1" cellpadding="8">
@@ -84,22 +84,17 @@ Three classifiers were implemented:
 
 <hr>
 
-<h2>📊 Model Comparison Chart</h2>
+<h2>Model Comparison Chart</h2>
 <img src="assets/comparison.png" width="700">
 
 <hr>
 
-<h2>📉 AG News Model Performance Chart</h2>
+<h2> Precision & Recall Chart</h2>
 <img src="assets/Precision&Recall.png" width="700">
 
 <hr>
 
-<h2>📉 Confusion Matrix (AG News - Logistic Regression)</h2>
-<img src="assets/confusion_matrix.png" width="500">
-
-<hr>
-
-<h2>🔍 Discussion</h2>
+<h2>Discussion</h2>
 <p>
 All models achieved perfect accuracy on the BBC dataset due to strong lexical separation 
 between categories. However, performance slightly decreased on the AG News dataset 
@@ -113,7 +108,7 @@ handle noisy feature distributions more effectively.
 
 <hr>
 
-<h2>⚠️ Challenges Faced</h2>
+<h2>Challenges Faced</h2>
 <ul>
 <li>Handling encoding issues in BBC dataset.</li>
 <li>Relabeling AG News classes correctly.</li>
@@ -123,7 +118,7 @@ handle noisy feature distributions more effectively.
 
 <hr>
 
-<h2>🚧 Limitations</h2>
+<h2> Limitations</h2>
 <ul>
 <li>TF-IDF ignores semantic meaning and word order.</li>
 <li>Binary classification oversimplifies real-world news topics.</li>
@@ -133,19 +128,9 @@ handle noisy feature distributions more effectively.
 
 <hr>
 
-<h2>🚀 Future Work</h2>
-<ul>
-<li>Use word embeddings (Word2Vec, GloVe).</li>
-<li>Implement transformer-based models (BERT).</li>
-<li>Extend to multi-class classification.</li>
-<li>Apply cross-validation for robustness analysis.</li>
-</ul>
-
-<hr>
-
-<h2>📄 Full Report</h2>
+<h2>Full Report</h2>
 <p>
-<a href="report/Final_Report.pdf" target="_blank">Download Complete Report (PDF)</a>
+<a href="Report.pdf" target="_blank">Download Complete Report (PDF)</a>
 </p>
 
 <h2>💻 Source Code</h2>
@@ -163,5 +148,6 @@ View GitHub Repository
 
 </body>
 </html>
+
 
 
