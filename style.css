@@ -4,64 +4,86 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #f4f6f9;
     color: #333;
-    text-align: center;
 }
 
+/* Center the whole container */
 .container {
     max-width: 900px;
     margin: auto;
     padding: 40px 20px;
+    text-align: center;   /* Only headings centered */
 }
 
+/* Main heading centered */
 h1 {
     font-size: 32px;
     margin-bottom: 10px;
 }
 
+/* Subtitle centered */
 .subtitle {
     color: #666;
     margin-bottom: 20px;
 }
 
+/* Cards centered but text inside left aligned */
 .card {
     background: white;
     padding: 25px;
-    margin: 30px 0;
+    margin: 30px auto;
     border-radius: 10px;
     box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+
+    text-align: left;   /* ✅ FIX: Left align content */
 }
 
+/* Center only card headings */
+.card h2,
+.card h3 {
+    text-align: center;
+}
+
+/* Lists aligned properly */
 ul {
-    list-style-position: inside;
+    list-style-position: outside;
+    padding-left: 20px;
 }
 
+/* Tables centered but text left aligned */
 table {
     margin: 20px auto;
     border-collapse: collapse;
-    width: 80%;
+    width: 90%;
 }
 
 table th, table td {
     border: 1px solid #ddd;
     padding: 10px;
+    text-align: left;
 }
 
 table th {
     background-color: #f0f0f0;
+    text-align: center;
 }
 
+/* Charts centered */
 .chart {
+    display: block;
+    margin: 20px auto;
     width: 100%;
     max-width: 700px;
-    margin-top: 15px;
 }
 
 .chart-small {
+    display: block;
+    margin: 20px auto;
     width: 60%;
-    margin-top: 15px;
 }
 
+/* Footer centered */
 footer {
     margin-top: 50px;
     color: #777;
+    text-align: center;
 }
