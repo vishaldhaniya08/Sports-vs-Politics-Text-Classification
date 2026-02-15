@@ -12,79 +12,138 @@
 <p class="subtitle">Natural Language Understanding Assignment</p>
 <p><b>Author:</b> Vishal | Roll No: B23CM1048</p>
 
+<!-- ================================================= -->
 <div class="card">
 <h2>Abstract</h2>
 <p>
-This project presents a comparative study of classical machine learning techniques 
-for binary text classification of news articles into Sports and Politics categories. 
-Two datasets with different characteristics were used: the BBC News dataset (clean and structured) 
-and the AG News dataset (larger and more diverse). The objective was to evaluate 
-model performance, robustness, and generalization capability across datasets 
-with varying complexity.
+This project presents a systematic comparative study of classical machine learning 
+approaches for binary news text classification. The objective was to classify news 
+articles into <b>Sports</b> and <b>Politics</b> categories using two datasets with 
+distinct characteristics: the BBC News dataset (clean, well-structured) and the 
+AG News dataset (large-scale and diverse).
+</p>
+
+<p>
+The study evaluates model performance, robustness, and generalization across 
+datasets that differ in size, lexical overlap, writing style, and domain variability. 
+Three supervised learning models — Multinomial Naive Bayes, Logistic Regression, 
+and Linear Support Vector Machine — were trained using TF-IDF features. 
+Performance was analyzed using accuracy, precision, recall, and F1-score.
 </p>
 </div>
 
+<!-- ================================================= -->
 <div class="card">
-<h2>📂 Data Collection</h2>
-<p>
-The BBC dataset was collected in folder format, containing separate directories 
-for Sports and Politics articles. Each article was stored as a text file.
-</p>
+<h2>📂 Dataset Description & Collection</h2>
 
+<h3>1. BBC News Dataset</h3>
 <p>
-The AG News dataset was downloaded in CSV format and filtered to include 
-only the World (relabelled as Politics) and Sports categories.
+The BBC dataset contains professionally written news articles organized in 
+separate directories by topic. Only two categories were selected: Sports and Politics.
 </p>
 
 <ul>
-<li><b>BBC Dataset:</b> 928 articles (511 Sports, 417 Politics)</li>
-<li><b>AG News Dataset:</b> ~11,400 filtered samples</li>
+<li>Total Articles: 928</li>
+<li>Sports: 511 articles</li>
+<li>Politics: 417 articles</li>
+<li>Format: Plain text files</li>
 </ul>
-</div>
 
-<div class="card">
-<h2> Dataset Analysis</h2>
 <p>
-The BBC dataset contains longer, professionally written articles with strong lexical separation 
-between domains. Sports articles frequently include terms such as "match", "team", and "season", 
-while political articles include terms like "government", "election", and "policy".
+This dataset is relatively clean, well-separated, and domain-specific, making 
+it suitable for controlled experimentation.
 </p>
 
+<h3>2. AG News Dataset</h3>
 <p>
-In contrast, AG News articles are shorter and exhibit greater vocabulary overlap. 
-This increases classification complexity and better represents real-world news scenarios.
-</p>
-</div>
-
-<div class="card">
-<h2> Methodology</h2>
-<p>
-Text preprocessing involved lowercasing and stopword removal. 
-Documents were converted into numerical feature vectors using TF-IDF representation, 
-which balances term frequency and inverse document frequency.
-</p>
-
-<p>
-Three models were evaluated:
+The AG News dataset is a large-scale news corpus in CSV format containing 
+four categories. For this study, only:
 </p>
 
 <ul>
-<li>Naive Bayes (Probabilistic Model)</li>
-<li>Logistic Regression (Discriminative Linear Model)</li>
-<li>Support Vector Machine (Margin-based Classifier)</li>
+<li>Class 1 (World) → Relabelled as Politics</li>
+<li>Class 2 (Sports)</li>
 </ul>
 
 <p>
-An 80–20 stratified train-test split was applied to the BBC dataset, 
-while AG News used predefined splits. Evaluation metrics included accuracy, 
-precision, recall, and F1-score.
+Approximately 11,400 filtered samples were used. Articles consist of short 
+titles and descriptions, increasing lexical ambiguity and classification complexity.
 </p>
+
 </div>
 
+<!-- ================================================= -->
+<div class="card">
+<h2>Comparative Dataset Analysis</h2>
+
+<p>
+The BBC dataset demonstrates strong lexical separation between domains. 
+Sports articles contain domain-specific terminology such as 
+<i>"match", "league", "coach", "season"</i>, whereas political articles 
+include terms like <i>"government", "election", "minister", "policy"</i>.
+</p>
+
+<p>
+In contrast, AG News articles are shorter and exhibit higher vocabulary overlap. 
+For example, words such as <i>"team", "campaign", "leader"</i> may appear in both 
+sports and political contexts. This overlap increases decision boundary complexity.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<ul>
+<li>BBC represents a <b>clean, separable classification scenario</b>.</li>
+<li>AG News represents a <b>real-world, noisy classification scenario</b>.</li>
+</ul>
+
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>Methodology</h2>
+
+<h3>1. Preprocessing</h3>
+<ul>
+<li>Lowercasing to normalize vocabulary.</li>
+<li>Stopword removal to eliminate high-frequency non-informative words.</li>
+<li>No stemming/lemmatization applied to preserve interpretability.</li>
+</ul>
+
+<h3>2. Feature Engineering: TF-IDF</h3>
+<p>
+Text documents were transformed into numerical feature vectors using 
+Term Frequency–Inverse Document Frequency (TF-IDF).
+</p>
+
+<p>
+TF-IDF assigns higher weight to words that are frequent within a document 
+but rare across the corpus. This reduces the dominance of common words 
+and enhances discriminative terms.
+</p>
+
+<h3>3. Models Evaluated</h3>
+<ul>
+<li><b>Multinomial Naive Bayes:</b> Probabilistic generative model assuming conditional independence.</li>
+<li><b>Logistic Regression:</b> Linear discriminative model optimizing log-loss.</li>
+<li><b>Linear SVM:</b> Margin-based classifier maximizing class separation.</li>
+</ul>
+
+<h3>4. Evaluation Strategy</h3>
+<ul>
+<li>BBC Dataset → 80–20 Stratified Train-Test Split</li>
+<li>AG News → Predefined Train/Test Split</li>
+<li>Metrics → Accuracy, Precision, Recall, F1-score</li>
+</ul>
+
+</div>
+
+<!-- ================================================= -->
 <div class="card">
 <h2>Experimental Results</h2>
 
-<h3>BBC Dataset</h3>
+<h3>BBC Dataset Results</h3>
 <table>
 <tr><th>Model</th><th>Accuracy</th></tr>
 <tr><td>Naive Bayes</td><td>1.000</td></tr>
@@ -92,7 +151,13 @@ precision, recall, and F1-score.
 <tr><td>SVM</td><td>1.000</td></tr>
 </table>
 
-<h3>AG News Dataset</h3>
+<p>
+All models achieved perfect accuracy due to strong lexical separation 
+between categories. The decision boundary is nearly linearly separable 
+in TF-IDF space.
+</p>
+
+<h3>AG News Dataset Results</h3>
 <table>
 <tr><th>Model</th><th>Accuracy</th></tr>
 <tr><td>Naive Bayes</td><td>0.9739</td></tr>
@@ -101,53 +166,104 @@ precision, recall, and F1-score.
 </table>
 
 <p>
-All models achieved perfect accuracy on the BBC dataset due to strong topic separation. 
-On the AG dataset, performance slightly decreased due to vocabulary overlap and shorter context.
+Performance slightly decreased compared to BBC due to:
+</p>
+
+<ul>
+<li>Shorter article length</li>
+<li>Vocabulary overlap</li>
+<li>Context ambiguity</li>
+</ul>
+
+<p>
+Logistic Regression achieved the highest accuracy, suggesting that 
+discriminative models better handle overlapping feature distributions.
 </p>
 
 </div>
 
+<!-- ================================================= -->
 <div class="card">
 <h2>Model Comparison Chart</h2>
 <img src="assets/comparison.png" alt="Model Comparison Chart" class="chart">
 </div>
 
 <div class="card">
-<h2>Precision & Recall </h2>
+<h2>Precision & Recall Analysis</h2>
 <img src="assets/Precision-Recall.png" alt="Precision & Recall" class="chart">
 </div>
 
+<!-- ================================================= -->
 <div class="card">
-<h2>Discussion</h2>
+<h2>Discussion & Interpretation</h2>
+
 <p>
-The comparative analysis demonstrates that classical machine learning models 
-remain highly effective for structured topic classification tasks. However, 
-performance varies depending on dataset characteristics. Logistic Regression 
-performed marginally better on the AG dataset, indicating that discriminative 
-models may better handle overlapping feature distributions.
+The results demonstrate that classical machine learning models remain 
+highly effective for structured topic classification tasks. 
+However, dataset characteristics significantly impact performance.
 </p>
-</div>
 
-<div class="card">
-<h2>Challenges and Limitations</h2>
 <ul>
-<li>TF-IDF ignores semantic meaning and word order.</li>
-<li>Binary classification oversimplifies multi-topic news articles.</li>
-<li>Models do not capture contextual dependencies.</li>
-<li>Dataset domain shift affects generalization.</li>
+<li>BBC dataset confirms near-linear separability.</li>
+<li>AG dataset demonstrates real-world ambiguity challenges.</li>
+<li>Logistic Regression slightly outperforms due to discriminative optimization.</li>
+<li>SVM performs consistently strong due to margin maximization.</li>
 </ul>
+
+<p>
+The minimal difference between models suggests that feature representation 
+(TF-IDF) plays a more critical role than classifier complexity for this task.
+</p>
+
 </div>
 
+<!-- ================================================= -->
 <div class="card">
-<h2>Future Work</h2>
+<h2>Challenges & Limitations</h2>
+
 <ul>
-<li>Use word embeddings (Word2Vec, GloVe).</li>
-<li>Apply transformer-based models (BERT).</li>
+<li>TF-IDF ignores semantic similarity and contextual meaning.</li>
+<li>No word embeddings used (semantic relationships not captured).</li>
+<li>Binary classification oversimplifies multi-topic articles.</li>
+<li>No deep contextual modeling (e.g., transformers).</li>
+<li>Domain shift between datasets affects generalization.</li>
+</ul>
+
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>Future Improvements</h2>
+
+<ul>
+<li>Incorporate Word Embeddings (Word2Vec, GloVe).</li>
+<li>Apply Transformer models (BERT, RoBERTa).</li>
+<li>Use Cross-Validation for stronger evaluation.</li>
+<li>Perform Error Analysis with confusion matrices.</li>
 <li>Extend to multi-class classification.</li>
-<li>Perform cross-validation for stronger evaluation.</li>
 </ul>
+
 </div>
 
+<!-- ================================================= -->
+<div class="card">
+<h2>Conclusion</h2>
+
+<p>
+This comparative study demonstrates that traditional linear classifiers 
+combined with TF-IDF remain strong baselines for news topic classification. 
+While performance is near-perfect in clean datasets, real-world data introduces 
+ambiguity that slightly reduces accuracy.
+</p>
+
+<p>
+The findings emphasize the importance of dataset characteristics, feature 
+engineering, and model selection when designing text classification systems.
+</p>
+
+</div>
+
+<!-- ================================================= -->
 <div class="card">
 <h2>Project Resources</h2>
 <p>
@@ -165,14 +281,5 @@ View Source Code on GitHub
 </footer>
 
 </div>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
