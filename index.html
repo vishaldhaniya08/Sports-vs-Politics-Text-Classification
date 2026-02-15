@@ -34,391 +34,69 @@ Performance was analyzed using accuracy, precision, recall, and F1-score.
 
 <!-- ================================================= -->
 <div class="card">
-<h2>Dataset Description & Collection</h2>
+<h2>📂 Dataset Description & Collection</h2>
 
 <h3>1. BBC News Dataset</h3>
-
 <p>
-The BBC News dataset is a well-known benchmark dataset frequently used 
-for topic classification tasks. It contains professionally written news 
-articles categorized into predefined topic folders.
-</p>
-
-<h4>Source & Structure</h4>
-<ul>
-<li>Source: Publicly available BBC news corpus</li>
-<li>Format: Folder-based directory structure</li>
-<li>Categories available: Business, Entertainment, Politics, Sport, Tech</li>
-</ul>
-
-<p>
-For this project, only two categories were selected:
+The BBC dataset contains professionally written news articles organized in 
+separate directories by topic. Only two categories were selected: Sports and Politics.
 </p>
 
 <ul>
-<li><b>Sport</b></li>
-<li><b>Politics</b></li>
+<li>Total Articles: 928</li>
+<li>Sports: 511 articles</li>
+<li>Politics: 417 articles</li>
+<li>Format: Plain text files</li>
 </ul>
 
 <p>
-Each article is stored as an individual text file inside its respective 
-category folder. The folder name itself serves as the class label.
+This dataset is relatively clean, well-separated, and domain-specific, making 
+it suitable for controlled experimentation.
 </p>
-
-<h4>Dataset Statistics</h4>
-<ul>
-<li>Total Articles Used: 928</li>
-<li>Sports Articles: 511</li>
-<li>Politics Articles: 417</li>
-<li>Average Article Length: Relatively long (multi-paragraph format)</li>
-</ul>
-
-<h4>Why BBC Dataset Was Selected</h4>
-
-<p>
-The BBC dataset provides:
-</p>
-
-<ul>
-<li>Clean, professionally edited text</li>
-<li>Strong topical separation</li>
-<li>Minimal noise and formatting inconsistencies</li>
-<li>Well-defined category boundaries</li>
-</ul>
-
-<p>
-It serves as an ideal baseline dataset to evaluate classifier behavior 
-under structured and controlled conditions.
-</p>
-
-<hr>
 
 <h3>2. AG News Dataset</h3>
-
 <p>
-The AG News dataset is a large-scale news corpus widely used for 
-text classification benchmarking. Unlike BBC, it contains shorter 
-news summaries aggregated from multiple news sources.
-</p>
-
-<h4>Source & Format</h4>
-<ul>
-<li>Source: AG News Corpus</li>
-<li>Format: CSV file (train.csv and test.csv)</li>
-<li>Fields: Class Index, Title, Description</li>
-</ul>
-
-<h4>Original Class Distribution</h4>
-<ul>
-<li>Class 1: World</li>
-<li>Class 2: Sports</li>
-<li>Class 3: Business</li>
-<li>Class 4: Sci/Tech</li>
-</ul>
-
-<p>
-For this study, the dataset was filtered to include only:
+The AG News dataset is a large-scale news corpus in CSV format containing 
+four categories. For this study, only:
 </p>
 
 <ul>
-<li><b>Class 1 (World)</b> → Relabelled as <b>Politics</b></li>
-<li><b>Class 2 (Sports)</b></li>
+<li>Class 1 (World) → Relabelled as Politics</li>
+<li>Class 2 (Sports)</li>
 </ul>
 
 <p>
-Classes 3 and 4 were excluded to maintain binary classification consistency 
-with the BBC dataset.
-</p>
-
-<h4>Dataset Statistics (Filtered)</h4>
-<ul>
-<li>Total Filtered Samples: ~11,400</li>
-<li>Balanced representation between Sports and Politics</li>
-<li>Shorter documents (title + description combined)</li>
-</ul>
-
-<h4>Preprocessing Decisions</h4>
-
-<ul>
-<li>Title and Description fields were concatenated to enrich textual context.</li>
-<li>Class indices were mapped to consistent labels ("sport" and "politics").</li>
-<li>Original train-test split provided by AG News was preserved to ensure standardized evaluation.</li>
-</ul>
-
-<hr>
-
-<h3>3. Comparative Collection Rationale</h3>
-
-<p>
-The selection of these two datasets was intentional and strategic.
-</p>
-
-<ul>
-<li><b>BBC Dataset</b> represents a clean, well-structured, low-noise environment.</li>
-<li><b>AG News Dataset</b> represents a large-scale, diverse, real-world scenario.</li>
-</ul>
-
-<p>
-By evaluating models on both datasets, the study aims to analyze:
-</p>
-
-<ul>
-<li>Model behavior under ideal vs realistic conditions</li>
-<li>Impact of document length on classification</li>
-<li>Influence of vocabulary overlap</li>
-<li>Generalization capability across datasets</li>
-</ul>
-
-<hr>
-
-<h3>4. Dataset Suitability for Task</h3>
-
-<p>
-Both datasets are appropriate for Sports vs Politics classification because:
-</p>
-
-<ul>
-<li>They contain domain-specific terminology.</li>
-<li>They represent real journalistic writing.</li>
-<li>They provide sufficient data volume for supervised learning.</li>
-<li>They allow evaluation of both separable and overlapping scenarios.</li>
-</ul>
-
-<p>
-Using both datasets strengthens the experimental design and ensures 
-that conclusions are not biased toward a single data source.
+Approximately 11,400 filtered samples were used. Articles consist of short 
+titles and descriptions, increasing lexical ambiguity and classification complexity.
 </p>
 
 </div>
 
-
 <!-- ================================================= -->
 <div class="card">
-<h2>Comparative Data Analysis</h2>
-
-<h3>1. Structural Differences Between Datasets</h3>
+<h2>Comparative Dataset Analysis</h2>
 
 <p>
-The BBC and AG News datasets differ significantly in structure, scale, and domain diversity. 
-These differences directly influence classification complexity and model performance.
+The BBC dataset demonstrates strong lexical separation between domains. 
+Sports articles contain domain-specific terminology such as 
+<i>"match", "league", "coach", "season"</i>, whereas political articles 
+include terms like <i>"government", "election", "minister", "policy"</i>.
 </p>
 
-<table>
-<tr>
-<th>Aspect</th>
-<th>BBC Dataset</th>
-<th>AG News Dataset</th>
-</tr>
-<tr>
-<td>Size</td>
-<td>928 articles</td>
-<td>~11,400 filtered samples</td>
-</tr>
-<tr>
-<td>Article Length</td>
-<td>Long-form articles</td>
-<td>Short title + description</td>
-</tr>
-<tr>
-<td>Domain Coverage</td>
-<td>Single-source (BBC)</td>
-<td>Multiple news sources</td>
-</tr>
-<tr>
-<td>Vocabulary Overlap</td>
-<td>Low overlap</td>
-<td>Moderate to High overlap</td>
-</tr>
-<tr>
-<td>Noise Level</td>
-<td>Low</td>
-<td>Higher (real-world variability)</td>
-</tr>
-</table>
-
-<hr>
-
-<h3>2. Lexical Distribution Analysis</h3>
+<p>
+In contrast, AG News articles are shorter and exhibit higher vocabulary overlap. 
+For example, words such as <i>"team", "campaign", "leader"</i> may appear in both 
+sports and political contexts. This overlap increases decision boundary complexity.
+</p>
 
 <p>
-The BBC dataset exhibits strong lexical separation between Sports and Politics categories.
-Sports articles frequently contain terms such as:
+Therefore:
 </p>
 
 <ul>
-<li>"match"</li>
-<li>"league"</li>
-<li>"coach"</li>
-<li>"season"</li>
-<li>"tournament"</li>
+<li>BBC represents a <b>clean, separable classification scenario</b>.</li>
+<li>AG News represents a <b>real-world, noisy classification scenario</b>.</li>
 </ul>
-
-<p>
-Political articles frequently include:
-</p>
-
-<ul>
-<li>"government"</li>
-<li>"election"</li>
-<li>"minister"</li>
-<li>"policy"</li>
-<li>"parliament"</li>
-</ul>
-
-<p>
-These clearly distinct vocabularies create near-linear separability in TF-IDF space.
-As a result, all models achieved 100% accuracy on the BBC dataset.
-</p>
-
-<p>
-In contrast, AG News contains shorter texts and more ambiguous terminology. 
-Words such as:
-</p>
-
-<ul>
-<li>"leader"</li>
-<li>"campaign"</li>
-<li>"team"</li>
-<li>"win"</li>
-<li>"world"</li>
-</ul>
-
-<p>
-may appear in both political and sports contexts, increasing feature overlap.
-This overlap reduces class separability and increases decision boundary complexity.
-</p>
-
-<hr>
-
-<h3>3. Impact of Article Length</h3>
-
-<p>
-Longer BBC articles provide richer contextual signals and more discriminative features.
-TF-IDF benefits from higher term frequency stability in longer documents.
-</p>
-
-<p>
-AG News articles are shorter, resulting in:
-</p>
-
-<ul>
-<li>Lower term frequency stability</li>
-<li>Higher sensitivity to ambiguous words</li>
-<li>Reduced contextual depth</li>
-</ul>
-
-<p>
-This explains the slight performance drop (~97%) compared to BBC.
-</p>
-
-<hr>
-
-<h3>4. Domain Consistency vs Domain Diversity</h3>
-
-<p>
-The BBC dataset is sourced from a single organization, ensuring consistent writing style, 
-terminology, and editorial standards. This consistency reduces variability 
-within each class.
-</p>
-
-<p>
-AG News aggregates content from multiple news providers, introducing:
-</p>
-
-<ul>
-<li>Stylistic variation</li>
-<li>Different writing conventions</li>
-<li>Mixed domain signals</li>
-<li>Greater lexical diversity</li>
-</ul>
-
-<p>
-Higher intra-class variance makes classification more challenging.
-</p>
-
-<hr>
-
-<h3>5. Class Separability in Feature Space</h3>
-
-<p>
-In TF-IDF vector space:
-</p>
-
-<ul>
-<li>BBC dataset shows clear cluster separation.</li>
-<li>AG dataset shows partially overlapping clusters.</li>
-</ul>
-
-<p>
-Linear models perform exceptionally well when classes are linearly separable.
-Thus, perfect accuracy on BBC confirms strong linear separability.
-</p>
-
-<p>
-On AG News, slight overlap means decision boundaries are less clean,
-resulting in small classification errors.
-</p>
-
-<hr>
-
-<h3>6. Generalization and Robustness</h3>
-
-<p>
-The BBC dataset represents a controlled environment ideal for testing model capability 
-under clean conditions. However, high performance on BBC does not necessarily imply 
-robust real-world generalization.
-</p>
-
-<p>
-AG News better simulates real-world scenarios, where:
-</p>
-
-<ul>
-<li>Topic boundaries blur</li>
-<li>Language is concise</li>
-<li>Domain overlap exists</li>
-</ul>
-
-<p>
-Therefore, performance on AG News is a stronger indicator of practical robustness.
-</p>
-
-<hr>
-
-<h3>7. Why Performance Differs Across Datasets</h3>
-
-<p>
-Performance differences arise due to:
-</p>
-
-<ul>
-<li>Vocabulary overlap</li>
-<li>Shorter document length</li>
-<li>Higher domain variability</li>
-<li>Increased feature ambiguity</li>
-</ul>
-
-<p>
-Discriminative models such as Logistic Regression and SVM handle 
-overlapping feature distributions better than Naive Bayes, explaining 
-their slight advantage on AG News.
-</p>
-
-<hr>
-
-<h3>8. Key Observations</h3>
-
-<ul>
-<li>BBC dataset confirms near-perfect linear separability.</li>
-<li>AG dataset introduces realistic classification challenges.</li>
-<li>Model performance differences become visible only in noisy conditions.</li>
-<li>Feature representation (TF-IDF) remains a critical factor.</li>
-</ul>
-
-<p>
-Overall, the comparative analysis demonstrates that dataset characteristics 
-significantly influence classifier behavior and evaluation outcomes.
-</p>
 
 </div>
 
@@ -671,7 +349,6 @@ in slightly imbalanced datasets.
 
 </div>
 
-
 <!-- ================================================= -->
 <div class="card">
 <h2>Experimental Results</h2>
@@ -716,60 +393,15 @@ discriminative models better handle overlapping feature distributions.
 </div>
 
 <!-- ================================================= -->
-<p>
-The model comparison chart visually summarizes the performance of 
-Naive Bayes, Logistic Regression, and Support Vector Machine across 
-both datasets. The chart highlights two key observations:
-</p>
+<div class="card">
+<h2>Model Comparison Chart</h2>
+<img src="assets/comparison.png" alt="Model Comparison Chart" class="chart">
+</div>
 
-<ul>
-<li><b>Uniform Performance on BBC Dataset:</b> All three models achieved 
-perfect accuracy (1.000). This confirms strong lexical separability 
-between Sports and Politics in the BBC corpus. The feature space 
-constructed using TF-IDF allows for near-linear decision boundaries, 
-making even simple models highly effective.</li>
-
-<li><b>Performance Variation on AG News Dataset:</b> Accuracy slightly 
-decreases for all models (approximately 97–98%). This reflects the 
-greater vocabulary overlap, shorter document length, and higher 
-intra-class variability present in AG News.</li>
-</ul>
-
-<p>
-Among the three models, <b>Logistic Regression</b> achieved the highest 
-accuracy on AG News. This suggests that discriminative models may 
-better handle overlapping feature distributions compared to generative 
-models like Naive Bayes.
-</p>
-
-<p>
-The <b>SVM</b> performed competitively, confirming its strength in 
-high-dimensional sparse feature spaces. Meanwhile, <b>Naive Bayes</b> 
-remained a strong baseline, demonstrating that probabilistic models 
-are highly efficient for text classification tasks despite their 
-independence assumption.
-</p>
-
-<p>
-Overall, the comparison indicates that:
-</p>
-
-<ul>
-<li>Feature representation (TF-IDF) plays a more significant role 
-than classifier complexity in well-separated datasets.</li>
-
-<li>In more challenging, real-world datasets, discriminative models 
-provide marginal but consistent improvements.</li>
-
-<li>The small accuracy gap (~0.3–0.4%) suggests all three models 
-are robust and suitable for binary topic classification.</li>
-</ul>
-
-<p>
-Therefore, the chart not only compares numerical accuracy but also 
-illustrates how dataset characteristics influence classifier behavior.
-</p>
-
+<div class="card">
+<h2>Precision & Recall Analysis</h2>
+<img src="assets/Precision-Recall.png" alt="Precision & Recall" class="chart">
+</div>
 
 <!-- ================================================= -->
 <div class="card">
@@ -861,5 +493,3 @@ View Source Code on GitHub
 </div>
 </body>
 </html>
-
-
